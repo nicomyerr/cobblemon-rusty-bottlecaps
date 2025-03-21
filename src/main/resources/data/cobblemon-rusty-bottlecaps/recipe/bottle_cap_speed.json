@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cobblemon-rusty-bottlecaps:rusty_bottle_cap_speed"
+    }
+  ],
+  "result": {
+    "id": "unimplemented_items:bottle_cap_spd",
+    "count": 1
+  }
+}

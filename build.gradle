@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
+    id 'org.jetbrains.kotlin.jvm' version '2.1.10'
 }
 
 version = project.mod_version
@@ -10,10 +11,21 @@ base {
     archivesName = project.archives_base_name
 }
 
+repositories {
+    // Add repositories to retrieve artifacts from in here.
+    // You should only use this when depending on other mods because
+    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+    // for more information about repositories.
+    mavenLocal()
+    mavenCentral()
+    maven{
+        url = uri("https://maven.impactdev.net/repository/development/")
+    }
+}
 
 loom {
     splitEnvironmentSourceSets()
-
     mods {
         "cobblemon-rusty-bottlecaps" {
             sourceSet sourceSets.main
@@ -30,7 +42,13 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
 
+    // Cobblemon
+    modImplementation "com.cobblemon:fabric:${cobblemon_version}"
+
+    // Kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:2.1.10'
 }
 
 processResources {

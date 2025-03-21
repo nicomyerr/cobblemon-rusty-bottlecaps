@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "unimplemented_items:bottle_cap_atk"
+    }
+  ],
+  "result": {
+    "id": "cobblemon-rusty-bottlecaps:rusty_bottle_cap_attack",
+    "count": 1
+  }
+}

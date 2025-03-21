@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cobblemon-rusty-bottlecaps:item/rusty_bottle_cap_special_attack"
+  }
+}
