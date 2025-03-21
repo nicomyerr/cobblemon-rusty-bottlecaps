@@ -1,12 +1,20 @@
 # cobblemon-rusty-bottlecaps
 
-Rusty bottlecaps for cobblemon
+This is a Minecraft mod which extends Cobblemon and the `cobblemon-unimplemented-items` mod by [tnetcalfe89](https://github.com/tmetcalfe89).
+
+## Features
+
+This mod adds Rusty Bottle Caps to change all the different IVs of your Pokémon to 0.
+
+Rusty bottle caps can be crafted quite easily. They are one-to-one interchangeable with the bottle caps from `cobblemon-unimplemented-items`.
+
+TODO pictures
 
 ## Installation
 
 - Modrinth
   - TODO
-- GitHub releases
+- GitHub
     - TODO
 - Building from source
   - Run `./gradlew build`
