@@ -1,9 +1,9 @@
 # cobblemon-rusty-bottlecaps
 
-[![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)](https://minecraft.net)
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-darkgreen)](https://minecraft.net)
 [![Cobblemon](https://img.shields.io/badge/Cobblemon-1.6.1-red)](https://cobblemon.com)
 [![Cobblemon](https://img.shields.io/badge/cobblemon--unimplemented--items-1.6--fabric--1.0.2-orange)](https://cobblemon.com)
-[![License](https://img.shields.io/badge/License-MIT-orange)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen)](LICENSE)
 
 This is a Minecraft mod which extends Cobblemon and the `cobblemon-unimplemented-items` ([Modrinth](https://modrinth.com/mod/cobblemon-unimplemented-items)) mod by [tnetcalfe89](https://github.com/tmetcalfe89) (for more info: [CREDIT](./CREDIT)).
 
