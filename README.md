@@ -8,7 +8,9 @@ This mod adds Rusty Bottle Caps to change all the different IVs of your Pokémon
 
 Rusty bottle caps can be crafted quite easily. They are one-to-one interchangeable with the bottle caps from `cobblemon-unimplemented-items`.
 
-TODO pictures
+![normal-to-rusty](./docs/normal-to-rusty.png)
+
+![rusty-to-normal](./docs/rusty-to-normal.png)
 
 ## Installation
 
