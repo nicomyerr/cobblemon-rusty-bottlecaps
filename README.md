@@ -1,6 +1,6 @@
 # cobblemon-rusty-bottlecaps
 
-This is a Minecraft mod which extends Cobblemon and the `cobblemon-unimplemented-items` mod by [tnetcalfe89](https://github.com/tmetcalfe89).
+This is a Minecraft mod which extends Cobblemon and the `cobblemon-unimplemented-items` mod by [tnetcalfe89](https://github.com/tmetcalfe89) (for more info: [CREDIT](./CREDIT)).
 
 ## Features
 
