@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "cobblemon-rusty-bottlecaps",
   "description": "Adds rusty bottlecaps to cobblemon",
-  "authors": ["Nico Meyer"],
+  "authors": ["nicomyerr"],
   "license": "MIT",
   "icon": "assets/cobblemon-rusty-bottlecaps/icon.png",
   "environment": "*",
