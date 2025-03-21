@@ -3,7 +3,7 @@
   "id": "cobblemon-rusty-bottlecaps",
   "version": "${version}",
   "name": "cobblemon-rusty-bottlecaps",
-  "description": "Adds rusty bottlecaps to cobblemon",
+  "description": "Adds Rusty Bottle Caps to cobblemon",
   "authors": ["nicomyerr"],
   "license": "MIT",
   "icon": "assets/cobblemon-rusty-bottlecaps/icon.png",
