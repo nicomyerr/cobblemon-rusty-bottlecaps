@@ -2,6 +2,7 @@ package de.mc.cobblemon.rusty.bottlecaps.items;
 
 import com.cobblemon.mod.common.api.pokemon.stats.Stat;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
+import com.cobblemon.mod.common.pokemon.Pokemon;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -22,40 +23,61 @@ public class RustyBottleCap extends Item {
     @Override
     public ActionResult useOnEntity(
             final ItemStack itemStack,
-            final PlayerEntity player,
+            final PlayerEntity source,
             final LivingEntity target,
             final Hand hand
     ) {
         // Ensure we don't use rusty bottle caps only on the client.
         // This is to prevent desync.
-        if (player.getWorld().isClient()) {
+        if (source.getWorld().isClient()) {
             return ActionResult.PASS;
         }
 
-        if (!(target instanceof PokemonEntity pokemon)) {
-            player.sendMessage(Text.translatable("Target is not a Pokemon!"));
+        if (!(target instanceof PokemonEntity pokemonEntity)) {
+            source.sendMessage(Text.translatable("Target is not a Pokemon!"));
             return ActionResult.FAIL;
         }
 
-        if (!isPokemonOwned(pokemon, player)) {
-            player.sendMessage(Text.translatable("The targeted Pokemon is not owned by you!"));
+        if (!isPokemonOwned(pokemonEntity, source)) {
+            source.sendMessage(Text.translatable("The targeted Pokemon is not owned by you!"));
             return ActionResult.FAIL;
         }
 
-        pokemon.getPokemon().getIvs().set(this.stat, 0);
-        ItemStack heldStack = player.getStackInHand(hand);
+        pokemonEntity.getPokemon().getIvs().set(this.stat, 0);
+        ItemStack heldStack = source.getStackInHand(hand);
         heldStack.decrement(1);
 
-        // TODO: make pokemon name safe (and use nickname?)
-        // TODO: Map name of shown id e.g. spd -> Speed
-        String text = "%s of %s set to 0".formatted(this.stat.getShowdownId(), pokemon.getPokemon().getDisplayName().toString().split("\\.")[2].toUpperCase());
-
-        player.sendMessage(Text.translatable(text));
+        source.sendMessage(Text.translatable(getSuccessfullMessage(this.stat.getShowdownId(), pokemonEntity)));
         return ActionResult.PASS;
     }
 
-    private boolean isPokemonOwned(final PokemonEntity target, final PlayerEntity player) {
+    private boolean isPokemonOwned(final PokemonEntity target, final PlayerEntity playerEntity) {
         var storeCoordinates = target.getPokemon().getStoreCoordinates().get();
-        return storeCoordinates != null && storeCoordinates.getStore().getUuid() == player.getUuid();
+        return storeCoordinates != null && storeCoordinates.getStore().getUuid() == playerEntity.getUuid();
+    }
+
+    private String getSuccessfullMessage(final String showdownId, final PokemonEntity pokemonEntity) {
+        return "%s of %s set to 0".formatted(showdownIdToIvName(showdownId), formatPokemonName(pokemonEntity.getPokemon()));
+    }
+
+    private String showdownIdToIvName(final String showdownId) {
+        return switch (showdownId) {
+            case "hp" -> "Health Points";
+            case "spe" -> "Speed";
+            case "atk" -> "Attack";
+            case "def" -> "Defense";
+            case "spa" -> "Special Attack";
+            case "spd" -> "Special Defense";
+            default -> "IV";
+        };
+    }
+
+    private String formatPokemonName(final Pokemon pokemon) {
+        if (pokemon.getNickname() != null && !pokemon.getNickname().toString().isBlank()) {
+            // TODO: refactor qick and dirty solution
+            return pokemon.getNickname().getContent().toString().replace("literal{", "").replace("}", "");
+        }
+        final String displayName = pokemon.getDisplayName().toString().split("\\.")[2];
+        return displayName.substring(0, 1).toUpperCase() + displayName.substring(1);
     }
 }
